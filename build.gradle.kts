@@ -20,6 +20,7 @@ repositories {
 val luceneVersion = "10.1.0"
 
 dependencies {
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.1")
     implementation("org.apache.lucene:lucene-analysis-common:$luceneVersion")
     implementation("org.apache.lucene:lucene-queryparser:$luceneVersion")
     implementation("org.apache.lucene:lucene-backward-codecs:$luceneVersion")
