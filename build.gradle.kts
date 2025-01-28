@@ -7,7 +7,7 @@ plugins {
 }
 
 application {
-    mainClass = "de.fraunhofer.iem.MavenIndexSearch"
+    mainClass = "de.fraunhofer.iem.MavenIndexSearchKt"
 }
 
 group = "de.fraunhofer.iem"
