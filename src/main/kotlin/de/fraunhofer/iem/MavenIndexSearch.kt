@@ -21,7 +21,7 @@ data class Input(@SerialName("_id") val name: String)
 
 const val QUERY_FIELD = "u"
 const val QUERY_PATTERN = "/.*\\|%s\\|.*/"
-const val PROCESS_LOG_INTERVAL = 100
+const val PROCESS_LOG_INTERVAL = 50
 
 fun main(args: Array<String>) = runBlocking {
     if (args.size != 3) {
@@ -55,7 +55,6 @@ fun main(args: Array<String>) = runBlocking {
                 async {
                     val parser = QueryParser(QUERY_FIELD, analyzer)
                     val query = parser.parse(String.format(QUERY_PATTERN, i.name))
-                    println("Query string: ${query.toString()}")
 
                     val hits = isearcher.search(query, 1).scoreDocs
                     val res = hits.firstOrNull()?.let { hit ->
@@ -71,7 +70,7 @@ fun main(args: Array<String>) = runBlocking {
                     }
 
                     if (idx % PROCESS_LOG_INTERVAL == 0) {
-                        println("------------------------ PROCESSED $idx documents ------------------")
+                        println("------------------------ PROCESSED $idx of ${input.size} documents ------------------")
                     }
                     res
                 }
