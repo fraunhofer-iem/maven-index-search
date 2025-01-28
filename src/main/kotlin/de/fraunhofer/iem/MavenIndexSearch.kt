@@ -63,6 +63,8 @@ fun main(args: Array<String>) {
 
     val results = ArrayList<QueryResult>(input.size)
 
+    var counter = 0
+
     for (i in input) {
         val queryString = "/.*\\|${i.name}\\|.*/"
         println("Query string: $queryString")
@@ -109,6 +111,10 @@ fun main(args: Array<String>) {
 
         println(qr)
         results.add(qr)
+        counter += 1
+        if (counter % 100 == 0) {
+            println("Processed $counter / ${input.size} files")
+        }
     }
     ireader.close()
     dir.close()
